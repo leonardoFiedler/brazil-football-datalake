@@ -125,8 +125,8 @@ def display_teams_data():
 def write_parquet(client, df, bucket, key):
     parquet_io = BytesIO()
     df.write_parquet(parquet_io)
+    parquet_io.seek(0)
     return client.upload_fileobj(parquet_io, bucket, key)
-
 
 # Assert quantity of clubs downloaded is correct
 assert len(content.findChildren("h3")) - 1 == len(teams)
@@ -140,8 +140,4 @@ assert 29 == ctn_cep
 
 df = pl.from_dicts(teams)
 
-df.write_csv("out.csv")
-
-# print(df.head())
-
-write_parquet(client, df, "datalake", "landing/2024/sc-teams.parquet")
+write_parquet(client, df, "datalake", "landing/2024/sc_teams.parquet")
