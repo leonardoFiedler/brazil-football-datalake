@@ -18,6 +18,8 @@ services:
       interval: 5s
       retries: 5
     restart: always
+    networks:
+      - shared_network
   
   minio:
     hostname: minio
@@ -33,6 +35,8 @@ services:
       MINIO_ROOT_PASSWORD: minio123
       MINIO_DEFAULT_BUCKETS: datalake
     command: server --console-address ":9001" /data
+    networks:
+      - shared_network
     
   # This job will create the "datalake" bucket on Minio
   mc-job:
@@ -45,6 +49,8 @@ services:
       "
     depends_on:
       - minio
+    networks:
+      - shared_network
   
   hive-metastore:
     hostname: hive-metastore
@@ -78,6 +84,8 @@ services:
       HIVE_METASTORE_USERS_IN_ADMIN_ROLE: "admin"
     depends_on:
       - postgres-dw
+    networks:
+      - shared_network
   
   coordinator:
     image: "trinodb/trino:422" 
@@ -86,6 +94,8 @@ services:
     container_name: "coordinator"
     volumes:  
       - ./trino/etc:/etc/trino
+    networks:
+      - shared_network
 
   metabase:
     image: metabase/metabase:v0.50.17
@@ -100,3 +110,9 @@ services:
       MB_DB_TYPE: h2
       MB_DB_FILE: /metabase/h2.db
       MB_PLUGINS_DIR: /plugins
+    networks:
+      - shared_network
+
+networks:
+  shared_network:
+    external: true

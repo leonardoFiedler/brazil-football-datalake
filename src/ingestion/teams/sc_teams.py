@@ -140,7 +140,8 @@ def process():
         "s3",
         aws_access_key_id = "minio",
         aws_secret_access_key = "minio123",
-        endpoint_url = "http://localhost:9000"
+        endpoint_url = "http://minio:9000",
+        region_name='us-east-1'
     )
     
     print("Requesting")

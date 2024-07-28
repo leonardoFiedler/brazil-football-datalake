@@ -3,6 +3,13 @@
 ## 1. How to Run this project
 
 0. Install Python (3.12), Docker, and Docker Compose
+
+1. Create network
+
+```
+docker network create shared_network
+```
+
 1. Install Airflow
 
 ```
@@ -20,3 +27,5 @@ docker compose up -d
 cd devops
 docker compose up -d
 ```
+
+# Dúvida, como fazer o Airflow via Docker enxergar o MinIO
