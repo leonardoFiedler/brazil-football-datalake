@@ -7,7 +7,7 @@ my_profile:
       host: localhost
       port: 8081
       user: admin
-      password: ""
+      password:
       http_scheme: http
     dev_postgres:
       type: postgres
