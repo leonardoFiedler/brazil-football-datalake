@@ -159,7 +159,12 @@ def process():
     
     print("Writing")
     df = pl.from_dicts(teams)
-    write_parquet(client, df, "datalake", "landing/2024/sc_teams.parquet")
+    
+    # TODO: Futuramente fazer escrita para o S3
+    # write_parquet(client, df, "datalake", "landing/2024/sc_teams.parquet")
+    
+    uri = "postgresql://airflow:airflow@localhost:5432/football"
+    df.write_database('bronze_sc_teams', uri, engine='adbc', if_table_exists='replace')
     
     print("All done!!!")
 
