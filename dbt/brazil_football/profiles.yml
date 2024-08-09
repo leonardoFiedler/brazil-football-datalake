@@ -2,7 +2,7 @@ brazil_football:
   outputs:
     dev:
       dbname: football
-      host: localhost
+      host: airflow-postgres-1
       pass: airflow
       port: 5432
       schema: public

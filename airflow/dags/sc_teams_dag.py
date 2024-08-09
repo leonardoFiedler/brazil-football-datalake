@@ -20,7 +20,6 @@ PATH_TO_PYTHON_BINARY = sys.executable
     tags=["example"],
 )
 def example_python_decorator():
-    # [START howto_operator_python]
     @task(task_id="print_the_context")
     def print_context(ds=None, **kwargs):
         print("Start execution")

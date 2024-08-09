@@ -1,4 +1,3 @@
-import boto3
 from io import BytesIO
 from bs4 import BeautifulSoup
 import requests
@@ -135,14 +134,14 @@ def validate(teams: list, cv: ClubsValidation, content):
 def process():
     cv: ClubsValidation = ClubsValidation()
     
-    print("Creating conn with S3")
-    client = boto3.client(
-        "s3",
-        aws_access_key_id = "minio",
-        aws_secret_access_key = "minio123",
-        endpoint_url = "http://minio:9000",
-        region_name='us-east-1'
-    )
+    # print("Creating conn with S3")
+    # client = boto3.client(
+    #     "s3",
+    #     aws_access_key_id = "minio",
+    #     aws_secret_access_key = "minio123",
+    #     endpoint_url = "http://minio:9000",
+    #     region_name='us-east-1'
+    # )
     
     print("Requesting")
     r = requests.get("https://fcf.com.br/clubes-filiados/")
@@ -163,7 +162,8 @@ def process():
     # TODO: Futuramente fazer escrita para o S3
     # write_parquet(client, df, "datalake", "landing/2024/sc_teams.parquet")
     
-    uri = "postgresql://airflow:airflow@localhost:5432/football"
+    uri = "postgresql://airflow:airflow@airflow-postgres-1:5432/football"
+    # uri = "postgresql://airflow:airflow@localhost:5432/football"
     df.write_database('bronze_sc_teams', uri, engine='adbc', if_table_exists='replace')
     
     print("All done!!!")

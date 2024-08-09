@@ -6,15 +6,17 @@ USER root
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
+    && apt-get -y install libpq-dev gcc \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 
 COPY requirements.txt ./requirements.txt
+
 USER airflow
 
 # installing specific DBT dependencies
-RUN python -m pip install --upgrade "pip==24.0" "setuptools==69.2.0" "wheel==0.43.0" --no-cache-dir
+RUN python -m pip install --upgrade "pip==24.2" "setuptools==69.2.0" "wheel==0.43.0" --no-cache-dir
 
 # Set up additional Python dependencies
 RUN pip install -r ./requirements.txt

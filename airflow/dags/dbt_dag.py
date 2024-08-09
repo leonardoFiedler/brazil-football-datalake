@@ -1,6 +1,5 @@
 from airflow import DAG
 from airflow.operators.bash import BashOperator
-from datetime import datetime
 
 default_args = {
     'owner': 'airflow'
@@ -13,10 +12,10 @@ dag = DAG(
 )
 
 # Task para transformar dados na camada de staging usando Trino
-dbt_run_staging = BashOperator(
-    task_id='dbt_run_staging',
-    bash_command='cd /opt/airflow/dbt && dbt run --models staging.transform_parquet_to_iceberg',
+dbt_run_all = BashOperator(
+    task_id='dbt_run_all',
+    bash_command='cd /opt/airflow/dbt/brazil_football && dbt run',
     dag=dag,
 )
 
-dbt_run_staging
+dbt_run_all
