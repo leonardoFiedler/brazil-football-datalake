@@ -14,7 +14,7 @@ dag = DAG(
 # Task para transformar dados na camada de staging usando Trino
 dbt_run_all = BashOperator(
     task_id='dbt_run_all',
-    bash_command='cd /opt/airflow/dbt/brazil_football && dbt run',
+    bash_command='dbt run --project-dir /sources/brazil_football_dbt',
     dag=dag,
 )
 

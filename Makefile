@@ -18,7 +18,7 @@ pip_install:
 	.venv/bin/pip install -r requirements.txt
 
 start: ## Inicia Serviços
-	docker build . --tag extending_airflow:latest -f airflow/Dockerfile && \
+	docker build . --tag extending_airflow:latest -f Dockerfile && \
 	cd airflow && \
 	mkdir -p ./dags ./logs ./plugins ./config && \
 	echo -e "AIRFLOW_UID=$(id -u)" > .env && \
@@ -29,6 +29,7 @@ run: # Roda os models do DBT localmente
 	cd dbt/brazil_football && dbt run
 
 stop: ## Desliga Serviços
+	docker compose -f airflow/docker-compose.yaml down && \
 	docker compose -f devops/docker-compose.yaml down  
 clean:
 	rm -rf .venv target
