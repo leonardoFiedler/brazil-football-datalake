@@ -1,9 +1,7 @@
-status: ## Status dos containers
-	docker ps
-ps: ## Status dos containers
+ps: ## Container status
 	docker ps
 
-install_dependencies: ## Instala dependências para o projeto 
+install_dependencies: ## Install dependencies 
 	@make create_env
 	@make 
 
@@ -17,7 +15,7 @@ pip_install:
 	. ./.venv/bin/activate
 	.venv/bin/pip install -r requirements.txt
 
-start: ## Inicia Serviços
+start: ## Start Services
 	docker build . --tag extending_airflow:latest -f Dockerfile && \
 	cd airflow && \
 	mkdir -p ./dags ./logs ./plugins ./config && \
@@ -25,13 +23,13 @@ start: ## Inicia Serviços
 	docker compose up airflow-init -d && \
 	docker compose up -d
 
-run: # Roda os models do DBT localmente
+run: # Run DBT Models locally
 	cd dbt/brazil_football && dbt run
 
-stop: ## Desliga Serviços
-	docker compose -f airflow/docker-compose.yaml down && \
-	docker compose -f devops/docker-compose.yaml down  
-clean:
+stop: ## Stop services
+	docker compose -f airflow/docker-compose.yaml down
+
+clean: ## Clean venv and generated folders
 	rm -rf .venv target
  
 #################################################################################
@@ -41,6 +39,6 @@ clean:
 .DEFAULT_GOAL := help
 
 help:
-	@echo Comandos disponíveis
+	@echo Available Commands
 	@echo '   '
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
