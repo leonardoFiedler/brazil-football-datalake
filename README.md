@@ -26,7 +26,7 @@ make start
 
 Once all services are running, you can access Airflow through your browser and execute the DAGs. To run the DBT models, simply execute make run in your terminal.
 
-### 3. Docs
+## 3. Docs
 
 Read more about our catalog at the [docs folder](./docs/README.md)
 
