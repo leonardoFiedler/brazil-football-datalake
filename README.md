@@ -12,7 +12,25 @@ In the first version, our focus is on gathering data exclusively about football 
 * How many clubs are registered in each state?
 * Can we visualize all the clubs together on a map?"
 
-## 2. To Do List
+## 2. How to Run
+
+You can run this project by following the instructions in the Makefile. Ensure that Docker and Python are installed on your system. The project uses the following technologies: Python, Docker, Docker Compose, Airflow, and DBT.
+
+To start the project with Airflow, execute the following commands:
+
+```
+make install_dependencies
+make create_shared_network
+make start
+```
+
+Once all services are running, you can access Airflow through your browser and execute the DAGs. To run the DBT models, simply execute make run in your terminal.
+
+### 3. Docs
+
+Read more about our catalog at the [docs folder](./docs/README.md)
+
+## 4. To Do List
 
 - [X] Collect data From Santa Catarina: [Federação Catarinense de Futebol (FCF)](https://fcf.com.br/) (Under Development)
 - [ ] Collect data From Acre: [Federação de Futebol do Estado do Acre (FFAC)](http://ffac.com.br/)
@@ -30,7 +48,8 @@ In the first version, our focus is on gathering data exclusively about football 
 - [ ] Collect data From Minas Gerais: [Federação Mineira de Futebol (FMF)](https://www.fmf.com.br/)
 - [ ] Collect data From Pará: [Federação Paraense de Futebol (FPF)](http://www.fpfpara.com.br/)
 - [ ] Collect data From Paraíba: [Federação Paraibana de Futebol (FPF)](http://www.federacaopbf.com.br/)
-- [ ] Collect data From Paraná: [Federação Paranaense de Futebol (FPF)](http://www.federacaopr.com.br/)
+- [ ] Collect data From Paraná: [Federação Paranaense de Futebol (FPF)](http://www.federacaopr.com.br/)Collect data From Santa Catarina: Federação Catarinense de Futebol (FCF) (Under Development)
+Collect
 - [ ] Collect data From Pernambuco: [Federação Pernambucana de Futebol (FPF)](http://www.fpf-pe.com.br/)
 - [ ] Collect data From Piauí: [Federação de Futebol do Piauí (FFP)](https://ffp-pi.com.br/)
 - [ ] Collect data From Rio de Janeiro: [Federação de Futebol do Estado do Rio de Janeiro (FFERJ)](http://www.fferj.com.br/)
@@ -41,21 +60,3 @@ In the first version, our focus is on gathering data exclusively about football 
 - [ ] Collect data From São Paulo: [Federação Paulista de Futebol (FPF)](http://www.fpf.org.br/)
 - [ ] Collect data From Sergipe: [Federação Sergipana de Futebol (FSF)](http://fsf.com.br/)
 - [ ] Collect data From Tocantins: [Federação Tocantinense de Futebol (FTF)](https://ftf.org.br/)
-
-## 3. How to Run
-
-You can run this project by following the instructions in the Makefile. Ensure that Docker and Python are installed on your system. The project uses the following technologies: Python, Docker, Docker Compose, Airflow, and DBT.
-
-To start the project with Airflow, execute the following commands:
-
-```
-make install_dependencies
-make create_shared_network
-make start
-```
-
-Once all services are running, you can access Airflow through your browser and execute the DAGs. To run the DBT models, simply execute make run in your terminal.
-
-### 4. Docs
-
-Read more about our catalog at the [docs folder](./docs/README.md)
