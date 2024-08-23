@@ -1,4 +1,4 @@
-#Dockerfile
+# This Dockerfile was created for local development and testing
 FROM apache/airflow:2.9.3-python3.12
 
 # Install additional dependencies
@@ -27,7 +27,8 @@ RUN python -m pip install --upgrade "pip==24.2" "setuptools==66.1.1" "wheel==0.4
 # Set up additional Python dependencies
 RUN pip install -r ./requirements.txt
 
-# Configurar variáveis de ambiente para DBT
+# DBT Env vars
 ENV DBT_PROFILES_DIR=/sources/brazil_football_dbt
 
+# Running DBT deps command to ensure everything is working well
 RUN dbt deps --project-dir /sources/brazil_football_dbt

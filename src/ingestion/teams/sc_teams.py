@@ -69,7 +69,7 @@ def execute(content: Tag) -> Tuple[list, ClubsValidation]:
             
             team_name = unidecode.unidecode(item.text.strip().lower())
             
-            team_data = {'team_name': team_name}
+            team_data = {'team_name': team_name, 'state': 'sc', 'date_load': "TODO"}
         elif tag == 'p':
             txt = unidecode.unidecode(item.text.strip().lower())
             prefix = txt.split(" ")[0].replace(":", "").replace("-", "")
