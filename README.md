@@ -14,7 +14,7 @@ In the first version, our focus is on gathering data exclusively about football 
 
 ## 2. How to Run
 
-You can run this project by following the instructions in the Makefile. Ensure that Docker and Python are installed on your system. The project uses the following technologies: Python, Docker, Docker Compose, Airflow, and DBT.
+You can run this project by following the instructions in the Makefile. Ensure that Docker and Python are installed on your system. The project uses the following technologies: Python, Docker, Docker Compose, Airflow.
 
 To start the project with Airflow, execute the following commands:
 
@@ -24,7 +24,7 @@ make create_shared_network
 make start
 ```
 
-Once all services are running, you can access Airflow through your browser and execute the DAGs. To run the DBT models, simply execute make run in your terminal.
+Once all services are running, you can access Airflow through your browser and execute the DAGs.
 
 ## 3. Docs
 

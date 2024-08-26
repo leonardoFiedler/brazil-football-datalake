@@ -1,5 +1,3 @@
-devops/volumes
-
 .git
 .gitignore
 Dockerfile*

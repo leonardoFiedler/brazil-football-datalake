@@ -12,23 +12,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN groupadd -r airflow
 
-COPY --chown=50000:0 /dbt/brazil_football /sources/brazil_football_dbt
-RUN mkdir -p /sources/brazil_football_dbt/logs && chown -R airflow:airflow /sources/brazil_football_dbt
-
 USER airflow
 
 RUN echo "Airflow UID: $(id -u airflow) GID: $(id -g airflow)"
 
 COPY requirements.txt ./requirements.txt
 
-# installing specific DBT dependencies
-RUN python -m pip install --upgrade "pip==24.2" "setuptools==66.1.1" "wheel==0.43.0" --no-cache-dir
-
 # Set up additional Python dependencies
 RUN pip install -r ./requirements.txt
-
-# DBT Env vars
-ENV DBT_PROFILES_DIR=/sources/brazil_football_dbt
-
-# Running DBT deps command to ensure everything is working well
-RUN dbt deps --project-dir /sources/brazil_football_dbt

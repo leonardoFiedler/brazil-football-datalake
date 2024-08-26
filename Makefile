@@ -19,12 +19,8 @@ start: ## Start Services
 	docker build . --tag extending_airflow:latest -f Dockerfile && \
 	cd airflow && \
 	mkdir -p ./dags ./logs ./plugins ./config && \
-	echo -e "AIRFLOW_UID=$(id -u)" > .env && \
 	docker compose up airflow-init -d && \
 	docker compose up -d
-
-run: # Run DBT Models locally
-	cd dbt/brazil_football && dbt run
 
 stop: ## Stop services
 	docker compose -f airflow/docker-compose.yaml down

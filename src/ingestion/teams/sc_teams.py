@@ -6,8 +6,8 @@ import unidecode
 import polars as pl
 from dataclasses import dataclass
 from typing import Tuple
+import boto3
 
-DB_URI = "postgresql://airflow:airflow@airflow-postgres-1:5432/football"
 TEAMS_URL = "https://fcf.com.br/clubes-filiados/"
 
 @dataclass
@@ -40,6 +40,12 @@ def display_teams_data(teams: list):
         cep = team['cep'] if 'cep' in team.keys() else None
         
         print(f"name: {name}   | date: {found}  | cnpj: {cnpj}  | stadium: {stadium}    | colors: {colors}  | president_name: {president}    | address: {address}   | cep: {cep}")
+
+def write_parquet(client, df, bucket, key):
+    parquet_io = BytesIO()
+    df.write_parquet(parquet_io)
+    parquet_io.seek(0)
+    return client.upload_fileobj(parquet_io, bucket, key)
 
 def execute(content: Tag) -> Tuple[list, ClubsValidation]:
     """ Execute the extraction of all teams. The website is not well divided. 
@@ -156,10 +162,19 @@ def validate(teams: list, cv: ClubsValidation, content: Tag):
     assert 31 == cv.ctn_address
     assert 29 == cv.ctn_cep
 
-def process():
+def process_sc_teams():
     """
     Process all SC clubs
     """
+    
+    # print("Creating conn with S3")
+    client = boto3.client(
+        "s3",
+        aws_access_key_id = "minio",
+        aws_secret_access_key = "minio123",
+        endpoint_url = "http://minio:9000",
+        region_name='us-east-1'
+    )
     
     print("Requesting")
     r = requests.get(TEAMS_URL)
@@ -177,7 +192,7 @@ def process():
     print("Writing")
     df = pl.from_dicts(teams)
     
-    df.write_database('bronze_sc_teams', DB_URI, engine='adbc', if_table_exists='replace')
+    write_parquet(client, df, "datalake", "landing/teams/year=2024/sc_teams.parquet")
     
     print("All done!!!")
 
