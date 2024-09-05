@@ -1,7 +1,7 @@
 from io import BytesIO
 from bs4 import BeautifulSoup, Tag
 import requests
-import datetime
+from datetime import datetime
 import unidecode
 import polars as pl
 from dataclasses import dataclass
@@ -9,6 +9,8 @@ from typing import Tuple
 import boto3
 
 TEAMS_URL = "https://fcf.com.br/clubes-filiados/"
+now = datetime.now()
+dt_load = now.strftime("%Y-%m-%d %H:%M:%S")
 
 @dataclass
 class ClubsValidation():
@@ -75,7 +77,7 @@ def execute(content: Tag) -> Tuple[list, ClubsValidation]:
             
             team_name = unidecode.unidecode(item.text.strip().lower())
             
-            team_data = {'team_name': team_name, 'state': 'sc', 'date_load': "TODO"}
+            team_data = {'team_name': team_name, 'state': 'sc', 'load_date': dt_load}
         elif tag == 'p':
             txt = unidecode.unidecode(item.text.strip().lower())
             prefix = txt.split(" ")[0].replace(":", "").replace("-", "")
@@ -92,7 +94,7 @@ def execute(content: Tag) -> Tuple[list, ClubsValidation]:
                 else:
                     dt_pattern = "%d/%m/%Y"
                     
-                dt_found = datetime.datetime.strptime(dt_found, dt_pattern).strftime("%Y-%m-%d")
+                dt_found = datetime.strptime(dt_found, dt_pattern).strftime("%Y-%m-%d")
                 team_data["foundation_date"] = dt_found
                 cv.ctn_dt_foundation += 1
             

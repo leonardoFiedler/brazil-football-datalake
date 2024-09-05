@@ -28,7 +28,6 @@ def brazil_teams():
         @task
         def process_sc_teams_task():
             process_sc_teams()
-            return "SC Teams done"
         
         @task
         def create_duck_db_table_task():
@@ -47,7 +46,19 @@ def brazil_teams():
                 conn.sql(f"""
                     DROP TABLE IF EXISTS teams;
                     CREATE TABLE teams AS
-                    SELECT * FROM read_parquet('s3://datalake/landing/teams/year=2024/*.parquet', filename = true);
+                    SELECT
+                        team_name,
+                        state,
+                        CAST(load_date as DATE) AS load_date,
+                        CAST(foundation_date as DATE) AS foundation_date,
+                        cnpj,
+                        stadium,
+                        colors,
+                        president_name,
+                        cep,
+                        filename,
+                        year as year_processed
+                    FROM read_parquet('s3://datalake/landing/teams/year=2024/*.parquet', filename = true);
                 """)
         
         process_sc_teams_task() >> create_duck_db_table_task()

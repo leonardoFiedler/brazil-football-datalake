@@ -25,6 +25,13 @@ start: ## Start Services
 stop: ## Stop services
 	docker compose -f airflow/docker-compose.yaml down
 
+analytics: ## Start analytics
+	cd src/analytics && \
+	msgfmt -o locales/en/LC_MESSAGES/messages.mo locales/en/LC_MESSAGES/messages && \
+	msgfmt -o locales/pt/LC_MESSAGES/messages.mo locales/pt/LC_MESSAGES/messages && \
+	streamlit run main.py
+	
+
 clean: ## Clean venv and generated folders
 	rm -rf .venv target
  
