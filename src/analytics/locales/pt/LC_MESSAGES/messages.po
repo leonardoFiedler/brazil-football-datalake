@@ -19,9 +19,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: main.py:11
-msgid "Hello, world!"
-msgstr "Olá, Mundo!"
+msgid "Quantity SC Clubs"
+msgstr "Quantidade de clubes em Santa Catarina: {}"
 
 #: Language
 msgid "Language"
 msgstr "Linguagem"
+
+#: Oldest club in SC text
+msgid "Oldest SC Club"
+msgstr "O clube mais velho de Santa Catarina é: {0} ({1} anos). Fundado em: {2}"
+
+#: Youngest club in SC text
+msgid "Youngest SC Club"
+msgstr "O clube mais novo de Santa Catarina é: {0} ({1} anos). Fundado em: {2}"
+
+#: 
+msgid "Quantity"
+msgstr "Quantidade"
+
+#: 
+msgid "Decades"
+msgstr "Décadas"
