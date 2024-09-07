@@ -7,13 +7,13 @@ _ = gettext.gettext
 
 language = st.sidebar.selectbox(_("Language"), ['en', 'pt'])
 
-localizator = gettext.translation('messages', localedir='locales', languages=[language])
+localizator = gettext.translation('messages', localedir='src/analytics/locales', languages=[language])
 localizator.install()
 _ = localizator.gettext 
 
 st.title(_("Analysis of Santa Catarina teams"))
 
-con = duckdb.connect("../main.db", read_only=True)
+con = duckdb.connect("src/main.db", read_only=True)
 
 qt_clubs = con.execute("SELECT COUNT(1) FROM main.teams WHERE state = 'sc'").fetchone()[0]
 oldest_team_name, oldest_team_found_date, oldest_team_age = con.execute("""
