@@ -7,12 +7,11 @@ _ = gettext.gettext
 
 language = st.sidebar.selectbox(_("Language"), ['en', 'pt'])
 
-st.title("Análise dos times de Santa Catarina")
-
 localizator = gettext.translation('messages', localedir='locales', languages=[language])
 localizator.install()
 _ = localizator.gettext 
 
+st.title(_("Analysis of Santa Catarina teams"))
 
 con = duckdb.connect("../main.db", read_only=True)
 
@@ -53,8 +52,8 @@ clubs_by_decade_df = con.execute(
 ).fetch_df()
 
 clubs_by_decade_df['decades'] = clubs_by_decade_df['decades'].map(
-    {0: 'Pré 1940', 1: 'Década de 40', 2: 'Década de 50', 3: 'Década de 60',
-     4: 'Década de 70', 5: 'Década de 80', 6: 'Década de 90', 7: 'Década de 2000', 8: 'Pós 2010'}
+    {0: _('Pre 1940'), 1: _("40's"), 2: _("50's"), 3: _("60's"),
+     4: _("70's"), 5: _("80's"), 6: _("90's"), 7: _("2000s"), 8: _("Post 2010")}
 )
 
 st.write(_("Quantity SC Clubs").format(qt_clubs))
@@ -63,7 +62,8 @@ st.write(_("Oldest SC Club").format(oldest_team_name.title(), oldest_team_age, o
 
 st.write(_("Youngest SC Club").format(youngest_team_name.title(), youngest_team_age, youngest_team_found_date))
 
-st.write(alt.Chart(clubs_by_decade_df, width=600, height=400).mark_bar(color="#1A43BF").encode(
+title = alt.TitleParams(_('Clubs Founded By Decade'), anchor='middle')
+st.write(alt.Chart(clubs_by_decade_df, width=600, height=400, title=title).mark_bar(color="#1A43BF").encode(
     x=alt.X('decades', sort=None, title=_("Decades")),
     y=alt.Y('ctn', title=_("Quantity")),
 ))

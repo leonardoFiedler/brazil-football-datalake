@@ -41,3 +41,47 @@ msgstr "Quantidade"
 #: 
 msgid "Decades"
 msgstr "Décadas"
+
+#: 
+msgid "Analysis of Santa Catarina teams"
+msgstr "Análise dos times de Santa Catarina"
+
+#: 
+msgid "Pre 1940"
+msgstr "Pré 1940"
+
+#: 
+msgid "40's"
+msgstr "Década de 40"
+
+#: 
+msgid "50's"
+msgstr "Década de 50"
+
+#: 
+msgid "60's"
+msgstr "Década de 60"
+
+#: 
+msgid "70's"
+msgstr "Década de 70"
+
+#: 
+msgid "80's"
+msgstr "Década de 80"
+
+#: 
+msgid "90's"
+msgstr "Década de 90"
+
+#: 
+msgid "2000s"
+msgstr "Década de 2000"
+
+#: 
+msgid "Post 2010"
+msgstr "Pós 2010"
+
+#: 
+msgid "Clubs Founded By Decade"
+msgstr "Clubes Fundados Por Década"
