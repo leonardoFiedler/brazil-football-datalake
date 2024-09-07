@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-05 12:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: Quantity of clubs in Santa Catarina text
+msgid "Quantity SC Clubs"
+msgstr ""
+
+#: Language
+msgid "Language"
+msgstr ""
+
+#: Oldest club in SC text
+msgid "Oldest SC Club"
+msgstr ""
+
+#: Youngest club in SC text
+msgid "Youngest SC Club"
+msgstr ""
+
+#: 
+msgid "Quantity"
+msgstr ""
+
+#: 
+msgid "Decades"
+msgstr ""
+
+#: 
+msgid "Analysis of Santa Catarina teams"
+msgstr ""
+
+#: 
+msgid "Pre 1940"
+msgstr ""
+
+#: 
+msgid "40's"
+msgstr ""
+
+#: 
+msgid "50's"
+msgstr ""
+
+#: 
+msgid "60's"
+msgstr ""
+
+#: 
+msgid "70's"
+msgstr ""
+
+#: 
+msgid "80's"
+msgstr ""
+
+#: 
+msgid "90's"
+msgstr ""
+
+#: 
+msgid "2000s"
+msgstr ""
+
+#: 
+msgid "Post 2010"
+msgstr ""
