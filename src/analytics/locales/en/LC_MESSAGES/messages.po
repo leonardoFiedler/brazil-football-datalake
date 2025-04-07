@@ -21,9 +21,17 @@ msgstr ""
 msgid "Quantity SC Clubs"
 msgstr "Quantity of Clubs in Santa Catarina: {}"
 
+#: Home
+msgid "Home"
+msgstr "Home"
+
 #: Language
 msgid "Language"
 msgstr "Language"
+
+#: Welcome Message
+msgid "Welcome Message"
+msgstr "The objective of this project is to create an open-source, collaborative, and comprehensive dataset about football in Brazil, encompassing teams, players, matches, coaches, and more. Our mission is to collect and process data from all Brazilian states."
 
 #: Oldest club in SC text
 msgid "Oldest SC Club"

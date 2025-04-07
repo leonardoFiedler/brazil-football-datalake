@@ -1,0 +1,3 @@
+[client]
+showSidebarNavigation = false #overwrite the default bar to create a custom one
+

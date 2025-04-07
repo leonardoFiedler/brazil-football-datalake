@@ -22,9 +22,17 @@ msgstr ""
 msgid "Quantity SC Clubs"
 msgstr "Quantidade de clubes em Santa Catarina: {}"
 
+#: Home
+msgid "Home"
+msgstr "Página Inicial"
+
 #: Language
 msgid "Language"
 msgstr "Linguagem"
+
+#: Welcome Message
+msgid "Welcome Message"
+msgstr "O objetivo deste projeto é criar um conjunto de dados de código aberto, colaborativo e abrangente sobre o futebol brasileiro, abrangendo times, jogadores, partidas, treinadores e muito mais. Nossa missão é coletar e processar dados de todos os estados brasileiros."
 
 #: Oldest club in SC text
 msgid "Oldest SC Club"

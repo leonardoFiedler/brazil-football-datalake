@@ -3,7 +3,7 @@ from __future__ import annotations
 import sys
 import duckdb
 
-sys.path.insert(0, '/opt/airflow/src')
+sys.path.insert(0, "/opt/airflow/src")
 
 import logging
 
@@ -16,19 +16,14 @@ log = logging.getLogger(__name__)
 PATH_TO_PYTHON_BINARY = sys.executable
 
 
-@dag(
-    schedule=None,
-    catchup=False
-)
+@dag(schedule=None, catchup=False)
 def brazil_teams():
-    
     @task_group
     def process_state_teams_tg():
-        
         @task
         def process_sc_teams_task():
             process_sc_teams()
-        
+
         @task
         def create_duck_db_table_task():
             with duckdb.connect("/opt/airflow/src/main.db") as conn:
@@ -42,8 +37,8 @@ def brazil_teams():
                             SET s3_secret_access_key='minio123';
                             SET s3_use_ssl='false';
                             """)
-                
-                conn.sql(f"""
+
+                conn.sql("""
                     DROP TABLE IF EXISTS teams;
                     CREATE TABLE teams AS
                     SELECT
@@ -60,9 +55,10 @@ def brazil_teams():
                         year as year_processed
                     FROM read_parquet('s3://datalake/landing/teams/year=2024/*.parquet', filename = true);
                 """)
-        
+
         process_sc_teams_task() >> create_duck_db_table_task()
 
     process_state_teams_tg()
+
 
 brazil_teams()

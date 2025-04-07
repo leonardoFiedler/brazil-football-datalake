@@ -167,3 +167,5 @@ logs/
 **/.DS_Store
 .ideia
 .vscode
+.ruff_cache
+devops/*

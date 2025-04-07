@@ -17,12 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: Home
+msgid "Home"
+msgstr ""
+
 #: Quantity of clubs in Santa Catarina text
 msgid "Quantity SC Clubs"
 msgstr ""
 
 #: Language
 msgid "Language"
+msgstr ""
+
+#: Welcome Message
+msgid "Welcome Message"
 msgstr ""
 
 #: Oldest club in SC text

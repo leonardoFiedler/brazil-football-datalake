@@ -1,19 +1,13 @@
-ps: ## Container status
-	docker ps
-
-install_dependencies: ## Install dependencies 
-	@make create_env
-	@make 
-
 create_shared_network:
 	docker network create shared_network
  
 create_env:  
-	python3 -m venv .venv
- 
-pip_install:  
-	. ./.venv/bin/activate
-	.venv/bin/pip install -r requirements.txt
+	@uv venv .venv
+	@uv sync --frozen
+
+format:
+	@ruff format
+	@ruff check --fix
 
 start: ## Start Services
 	docker build . --tag extending_airflow:latest -f Dockerfile && \
@@ -26,11 +20,9 @@ stop: ## Stop services
 	docker compose -f airflow/docker-compose.yaml down
 
 analytics: ## Start analytics
-	cd src/analytics && \
-	msgfmt -o locales/en/LC_MESSAGES/messages.mo locales/en/LC_MESSAGES/messages && \
-	msgfmt -o locales/pt/LC_MESSAGES/messages.mo locales/pt/LC_MESSAGES/messages && \
-	streamlit run main.py
-	
+	msgfmt -o src/analytics/locales/en/LC_MESSAGES/messages.mo src/analytics/locales/en/LC_MESSAGES/messages && \
+	msgfmt -o src/analytics/locales/pt/LC_MESSAGES/messages.mo src/analytics/locales/pt/LC_MESSAGES/messages && \
+	streamlit run src/analytics/main.py
 
 clean: ## Clean venv and generated folders
 	rm -rf .venv target

@@ -1,0 +1,56 @@
+[project]
+name = "brazil-football-datalake"
+version = "0.0.1"
+description = "Open-source, collaborative, and comprehensive dataset about football in Brazil, encompassing teams, players, matches, coaches, and more."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.13.3",
+    "duckdb>=1.2.1",
+    "polars>=1.26.0",
+    "pyarrow>=19.0.1",
+    "requests>=2.32.3",
+    "ruff>=0.11.4",
+    "streamlit>=1.44.1",
+    "unidecode>=1.3.8",
+]
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+    "devops",
+    "docs",
+]
+
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+# Assume Python 3.12
+target-version = "py312"
